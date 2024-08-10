@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useMemo, useReducer, useRef} from 'react';
+import React, {useReducer, useRef} from 'react';
 import {formatDate} from 'date-fns';
 
 const todoReducer = (state, action) => {
