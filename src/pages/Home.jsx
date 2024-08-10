@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import React, {useMemo, useReducer, useRef} from 'react';
+import {formatDate} from 'date-fns';
 
 const todoReducer = (state, action) => {
   switch (action.type) {
@@ -77,13 +78,7 @@ const Home = (props) => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
   const inputRef = useRef({});
 
-  const today = useMemo(() => {
-    return new Date()
-      .toLocaleDateString()
-      .split('/')
-      .map((x) => (x < 0 ? x : `0${x}`))
-      .join('.');
-  }, []);
+  const today = formatDate(new Date(), 'dd.MM.yyyy');
 
   const handleInputChange = (text) => {
     dispatch({type: 'changeAddTodoText', payload: text});
